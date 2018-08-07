@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Nav from './Nav'
 
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
       <Router>
         <Fragment>
           <div>
-
+            <Nav />
           </div>
         </Fragment>
       </Router>
@@ -17,4 +18,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+export default App
