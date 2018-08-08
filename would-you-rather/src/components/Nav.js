@@ -3,19 +3,20 @@ import { NavLink } from 'react-router-dom'
 
 export default function Nav () {
   return (
-    <nav>
-      <ul className='nav-bar-main'>
+    <nav className='nav'>
+      <ul>
         <li>
-          <NavLink to='/' exact>
+          <NavLink to='/' exact activeClassName='active'>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to='/add'>
+          <NavLink to='/add' activeClassName='active'>
             New Poll
           </NavLink>
         </li>
       </ul>
     </nav>
+
   )
 }

@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <div>
+          <div className='container'>
             <Nav />
           </div>
         </Fragment>

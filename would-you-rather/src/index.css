@@ -2,15 +2,49 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: lightgrey;
+  background-color: #F0F0F0;
 }
 
 a {
-  text-decoration-line: none;
+  text-decoration: none;
 }
 
-.nav-bar-main li {
-  display: inline-block;
-  padding: 1rem;
-  list-style: none;
+ul {
+  padding-left: 0;
+  margin-bottom: 5px;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.nav {
+  border-bottom: 1px solid #B0B0B0;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+.active {
+  font-weight: bold;
 }
