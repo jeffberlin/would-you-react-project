@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export default function Nav () {
   return (
     <nav>
-      <ul>
+      <ul className='nav-bar-main'>
         <li>
           <NavLink to='/' exact>
             Home
@@ -12,7 +12,7 @@ export default function Nav () {
         </li>
         <li>
           <NavLink to='/add'>
-            Add Poll
+            New Poll
           </NavLink>
         </li>
       </ul>
