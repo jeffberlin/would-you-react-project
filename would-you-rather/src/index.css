@@ -48,3 +48,15 @@ li {
 .active {
   font-weight: bold;
 }
+
+.avatar {
+  height: 50px;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.question-info {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
