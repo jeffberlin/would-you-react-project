@@ -2,11 +2,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #F0F0F0;
+  /* background-color: #F2FCFF; */
 }
 
 a {
   text-decoration: none;
+  color: #b9b9b9;
+  letter-spacing: .7px;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
 }
 
 ul {
@@ -35,7 +39,7 @@ li {
 }
 
 .nav {
-  border-bottom: 1px solid #B0B0B0;
+  border-bottom: 1px solid #c2c2c2;
 }
 
 .nav ul {
@@ -67,5 +71,8 @@ li {
 
 .login-box {
   height: 300px;
-  border: 1px solid #b0b0b0;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 1px solid #c2c2c2;
+  margin-top: 4rem;
 }

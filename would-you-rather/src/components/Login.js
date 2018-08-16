@@ -21,15 +21,16 @@ class Login extends Component {
       toHome: true
     })
   }
-  render() {
 
+  render() {
     if (this.state.toHome === true) {
       return <Redirect to='/' />
     }
+
     return (
       <div className='login-box'>
         <div>
-          Avatar
+          
         </div>
       </div>
     )
