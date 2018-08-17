@@ -28,9 +28,9 @@ class Login extends Component {
     }
 
     return (
-      <div className='login-box'>
+      <div className='login-box center'>
         <div>
-          
+          <h2 className='header'>Sign in to continue</h2>
         </div>
       </div>
     )
