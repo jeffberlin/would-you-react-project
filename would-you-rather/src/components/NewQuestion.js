@@ -37,7 +37,7 @@ class NewQuestion extends Component {
     }
     return (
       <div>
-        <h3 className='center'>Add new question</h3>
+        <h3 className='center header'>Add new question</h3>
       </div>
     )
   }

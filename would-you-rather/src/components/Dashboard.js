@@ -6,7 +6,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h3 className='center'>Questions</h3>
+        <h3 className='center header'>Questions</h3>
         <ul className='dashboard-list'>
           <li>
             <Question />

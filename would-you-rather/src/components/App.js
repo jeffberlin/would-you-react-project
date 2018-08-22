@@ -6,6 +6,7 @@ import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage'
 import Dashboard from './Dashboard'
 import Login from './Login'
+import LeaderBoard from './LeaderBoard'
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
               <Route path='/login' component={Login} />
               <Route path='/question:id' component={QuestionPage} />
               <Route path='/add' component={NewQuestion} />
+              <Route path='/leaderboard' component={LeaderBoard} />
             </div>
           </div>
         </Fragment>
