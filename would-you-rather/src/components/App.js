@@ -7,6 +7,7 @@ import QuestionPage from './QuestionPage'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import LeaderBoard from './LeaderBoard'
+import ErrorPage from './ErrorPage'
 
 class App extends Component {
   render() {

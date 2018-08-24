@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUserId } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 class Login extends Component {
   state = {
@@ -32,9 +33,27 @@ class Login extends Component {
         <div>
           <h2 className='header'>Sign in to continue</h2>
         </div>
+        {this.props.users.map(user => (
+          <div>
+            <span>{user.name}</span>
+            <div key={user.id}></div>
+            <img
+              className='avatar'
+              src={user.avatarURL}
+              alt={`Avatar of ${user.name}`}
+            />
+          </div>
+        ))}
+        <Button onClick={this.handleSignIn} disabled={!this.state.checked}>
+          Log In
+        </Button>
       </div>
     )
   }
 }
 
-export default connect()(Login)
+function mapStateToProps ({ users }) {
+  return {users: Object.keys(users).map(key => users[key])}
+}
+
+export default connect(mapStateToProps)(Login)

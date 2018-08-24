@@ -83,3 +83,12 @@ li {
   margin-top: 4rem;
   box-shadow: 2px 1px 8px 3px lightgrey;
 }
+
+.login-btn {
+  background-color: limegreen;
+  border-radius: .3rem;
+  font-size: 16px;
+  padding: .4rem;
+  width: 200px;
+  box-shadow: 2px 1px 8px 3px lightgrey;
+}
