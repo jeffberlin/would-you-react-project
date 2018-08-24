@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { setAuthedUserId } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import List from '@material-ui/core/List'
+import Card from '@material-ui/core/Card'
 
 class Login extends Component {
   state = {
@@ -29,25 +31,27 @@ class Login extends Component {
     }
 
     return (
-      <div className='login-box center'>
+      <Card className='center card-style'>
         <div>
           <h2 className='header'>Sign in to continue</h2>
         </div>
-        {this.props.users.map(user => (
-          <div>
-            <span>{user.name}</span>
-            <div key={user.id}></div>
-            <img
-              className='avatar'
-              src={user.avatarURL}
-              alt={`Avatar of ${user.name}`}
-            />
-          </div>
-        ))}
-        <Button onClick={this.handleSignIn} disabled={!this.state.checked}>
+        <List>
+          {this.props.users.map(user => (
+            <div>
+              <span>{user.name}</span>
+              <div key={user.id}></div>
+              <img
+                className='avatar'
+                src={user.avatarURL}
+                alt={`Avatar of ${user.name}`}
+              />
+            </div>
+          ))}
+        </List>
+        <Button onClick={this.handleSignIn}>
           Log In
         </Button>
-      </div>
+      </Card>
     )
   }
 }
