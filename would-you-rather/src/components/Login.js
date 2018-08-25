@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUserId } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
+// Using Material-UI to help build the layout
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import Card from '@material-ui/core/Card'
+import Avatar from '@material-ui/core/Avatar'
+import Checkbox from '@material-ui/core/Checkbox'
 
 class Login extends Component {
   state = {
@@ -36,21 +42,30 @@ class Login extends Component {
           <h2 className='header'>Sign in to continue</h2>
         </div>
         <List>
+          <input
+            type='text'
+            placeholder='Enter name'
+            className='login-input'
+          />
+          <Button onClick={this.handleSignIn}>
+            Log In
+          </Button>
           {this.props.users.map(user => (
-            <div>
-              <span>{user.name}</span>
-              <div key={user.id}></div>
-              <img
-                className='avatar'
+            <ListItem key={user.id} dense button>
+              <Avatar
                 src={user.avatarURL}
                 alt={`Avatar of ${user.name}`}
               />
-            </div>
+              <ListItemText primary={user.name} />
+              <ListItemSecondaryAction>
+                <Checkbox
+                  onChange={this.handleToggle(user.id)}
+                  checked={this.state.checked === user.id}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
           ))}
         </List>
-        <Button onClick={this.handleSignIn}>
-          Log In
-        </Button>
       </Card>
     )
   }
