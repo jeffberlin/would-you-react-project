@@ -51,7 +51,9 @@ class Login extends Component {
               <ListItemText className='avatar-name' primary={user.name} />
             </ListItem>
           ))}
-          <Button onClick={this.handleSignIn}>
+          <Button
+            className='login-btn'
+            onClick={this.handleSignIn}>
             Log In
           </Button>
         </List>

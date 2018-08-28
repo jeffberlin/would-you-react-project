@@ -5,7 +5,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #b9b9b9;
+  color: #3a4b58;
   letter-spacing: .7px;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
@@ -37,7 +37,7 @@ li {
 }
 
 .nav {
-  border-bottom: 1px solid #c2c2c2;
+  border-bottom: 1px solid #30CF83;
 }
 
 .nav ul {
@@ -55,6 +55,13 @@ li {
   font-weight: bold;
 }
 
+.header {
+  font-family: 'Oxygen', sans-serif;
+  letter-spacing: .7px;
+  font-weight: 400;
+  color: #3a4b58;
+}
+
 .avatar {
   height: 50px;
   border-radius: 25px;
@@ -65,14 +72,14 @@ li {
   letter-spacing: .7px;
   font-size: 20px !important;
   font-family: 'Roboto Condensed', sans-serif;
-  /* font-weight: 400; */
+  color: #696a6d;
 }
 
-.header {
-  font-family: 'Oxygen', sans-serif;
+.login-btn {
+  font-family: 'Oxygen', sans-serif !important;
   letter-spacing: .7px;
-  font-weight: 400;
-  opacity: .6;
+  font-weight: 700 !important;
+  color: #30CF83 !important;
 }
 
 .question-info {
