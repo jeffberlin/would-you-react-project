@@ -7,9 +7,16 @@ import QuestionPage from './QuestionPage'
 import Dashboard from './Dashboard'
 import Login from './Login'
 import LeaderBoard from './LeaderBoard'
-import ErrorPage from './ErrorPage'
+//import ErrorPage from './ErrorPage'
+import { fetchInitialUsers, fetchInitialQuestions } from '../actions/shared'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(fetchInitialUsers())
+    this.props.dispatch(fetchInitialQuestions())
+  }
+
   render() {
     return (
       <Router>
@@ -30,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect()(App)

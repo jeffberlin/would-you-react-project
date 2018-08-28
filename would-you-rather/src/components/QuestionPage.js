@@ -29,4 +29,4 @@ function mapStateToProps({ authedUser, questions, users}, props) {
     id,
   }
 }
-export default QuestionPage
+export default connect()(QuestionPage)
