@@ -46,6 +46,7 @@ class Login extends Component {
               <Avatar
                 src={user.avatarURL}
                 alt={`Avatar of ${user.name}`}
+                className='avatar'
               />
               <ListItemText primary={user.name} />
             </ListItem>

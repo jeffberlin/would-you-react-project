@@ -55,11 +55,11 @@ li {
   font-weight: bold;
 }
 
-/* .avatar {
+.avatar {
   height: 50px;
   border-radius: 25px;
   margin: 10px;
-} */
+}
 
 .header {
   font-family: 'Oxygen', sans-serif;
