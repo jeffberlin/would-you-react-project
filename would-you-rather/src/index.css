@@ -61,6 +61,13 @@ li {
   margin: 10px;
 }
 
+.avatar-name span {
+  letter-spacing: .7px;
+  font-size: 20px !important;
+  font-family: 'Roboto Condensed', sans-serif;
+  /* font-weight: 400; */
+}
+
 .header {
   font-family: 'Oxygen', sans-serif;
   letter-spacing: .7px;
