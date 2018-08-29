@@ -54,10 +54,11 @@ class Login extends Component {
             <InputLabel htmlFor='selector' className='p-text'>Select User</InputLabel>
             <Select
               value={this.state.checked}
-              onChange={this.handleToggle}
+              // onChange={this.handleToggle(user.id)}
+              // checked={this.state.checked === user.id}
               inputProps={{
-                name: 'checked',
-                id: 'selector'
+                  name: 'checked',
+                  id: 'selector'
               }}
             >
               {this.props.users.map(user => (
@@ -75,7 +76,8 @@ class Login extends Component {
         </List>
         <Button
           className='login-btn'
-          onClick={this.handleSignIn}>
+          onClick={this.handleSignIn}
+        >
           Log In
         </Button>
       </Card>

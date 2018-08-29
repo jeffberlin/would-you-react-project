@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect, Link } from 'react-router-dom'
 import Question from './Question'
 
 class Dashboard extends Component {
@@ -17,4 +18,8 @@ class Dashboard extends Component {
   }
 }
 
-export default connect()(Dashboard)
+function mapStateToProps({ questions, authedUser, users }) {
+  return {questions: Object.keys(questions).map(key => questions[key]), authedUser}
+}
+
+export default connect(mapStateToProps)(Dashboard)
