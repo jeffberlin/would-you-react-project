@@ -32,8 +32,10 @@ li {
   text-align: center;
 }
 
-.right {
-  text-align: right;
+.p-text {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  letter-spacing: .7px;
+  color: #696a6d !important;
 }
 
 .nav {
@@ -62,17 +64,20 @@ li {
   color: #3a4b58;
 }
 
-.avatar {
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 120px !important;
+}
+
+/* .avatar {
   height: 50px;
   border-radius: 25px;
   margin: 10px;
-}
+} */
 
 .avatar-name span {
-  letter-spacing: .7px;
-  font-size: 20px !important;
-  font-family: 'Roboto Condensed', sans-serif;
-  color: #696a6d;
+  font-size: 18px !important;
 }
 
 .login-btn {
@@ -80,6 +85,7 @@ li {
   letter-spacing: .7px;
   font-weight: 700 !important;
   color: #30CF83 !important;
+  margin-top: 1rem !important;
 }
 
 .question-info {
