@@ -18,8 +18,4 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions, authedUser, users }) {
-  return {questions: Object.keys(questions).map(key => questions[key]), authedUser}
-}
-
-export default connect(mapStateToProps)(Dashboard)
+export default connect()(Dashboard)
