@@ -114,3 +114,7 @@ li {
 .login-search {
   margin-right: 10px;
 }
+
+.MuiCheckbox-colorSecondary-118.MuiCheckbox-checked-115 {
+  color: #30CF83 !important;
+}

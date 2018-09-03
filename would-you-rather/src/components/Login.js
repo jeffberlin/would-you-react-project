@@ -5,20 +5,14 @@ import { Redirect } from 'react-router-dom'
 
 // Using Material-UI to help build the layout
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import InputLabel from '@material-ui/core/InputLabel'
-import Input from '@material-ui/core/Input'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import FormControl from '@material-ui/core/FormControl'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-//import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import Card from '@material-ui/core/Card'
+import Checkbox from '@material-ui/core/Checkbox'
 import Avatar from '@material-ui/core/Avatar'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 
 class Login extends Component {
   state = {
@@ -50,29 +44,22 @@ class Login extends Component {
           <h2 className='header'>Sign in to continue</h2>
         </div>
         <List>
-          <FormControl className='form'>
-            <InputLabel htmlFor='selector' className='p-text'>Select User</InputLabel>
-            <Select
-              value={this.state.checked}
-              // onChange={this.handleToggle(user.id)}
-              // checked={this.state.checked === user.id}
-              inputProps={{
-                  name: 'checked',
-                  id: 'selector'
-              }}
-            >
-              {this.props.users.map(user => (
-                <MenuItem key={user.id}>
-                  <Avatar
-                    src={user.avatarURL}
-                    alt={`Avatar of ${user.name}`}
-                    className='avatar'
-                  />
-                  <ListItemText className='avatar-name p-text' primary={user.name} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          {this.props.users.map(user => (
+            <ListItem key={user.id} onChange={this.handleToggle(user.id)} checked={this.state.checked === user.id}>
+              <Avatar
+                src={user.avatarURL}
+                alt={`Avatar of ${user.name}`}
+                className='avatar'
+              />
+              <ListItemText className='avatar-name p-text' primary={user.name} />
+              <ListItemSecondaryAction>
+                <Checkbox
+                  onChange={this.handleToggle(user.id)}
+                  checked={this.state.checked === user.id}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
         </List>
         <Button
           className='login-btn'
