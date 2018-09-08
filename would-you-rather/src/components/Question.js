@@ -2,25 +2,36 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-
-// Using Material-UI to help build the layout
-import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import Unanswered from './Unanswered'
+import Answered from './Answered'
 
 class Question extends Component {
-
   render() {
-
-    return (
-      <div>
-      </div>
-    )
+    const { question, answeredQuestion, authedUser } = this.props
+    if (authedUser) {
+      if (answeredQuestion) {
+        return <Answered id={question.id} />
+      } else {
+        return <Unanswered id={question.id} />
+      }
+    }
+    else {
+      return <Redirect to='/login' />
+    }
   }
 }
 
-export default connect()(Question)
+function mapStateToProps({ questions, authedUser, users }, props) {
+  const id = props.match.params.id
+  const question = questions[id]
+  const authedUsersAnswers = authedUser && Object.keys(users[authedUser].answers)
+  const answeredQuestion = authedUser && authedUsersAnswers.includes(id)
+
+  return {
+    answeredQuestion,
+    question,
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(Question)

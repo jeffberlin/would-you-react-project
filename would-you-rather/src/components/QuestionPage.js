@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import NewQuestion from './NewQuestion'
+import AddQuestion from './AddQuestion'
 import Question from './Question'
 
 class QuestionPage extends Component {
@@ -9,14 +9,8 @@ class QuestionPage extends Component {
     return (
       <div>
         <Question id={id} />
-        <NewQuestion id={id} />
+        <AddQuestion id={id} />
 
-        <ul>
-
-          <li>
-            <Question />
-          </li>
-        </ul>
       </div>
     )
   }

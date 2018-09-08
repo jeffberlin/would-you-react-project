@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Question from './Question'
 
 // Using Material-UI to help build the layout
 import { withStyles } from '@material-ui/core/styles'
@@ -12,11 +13,12 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
 
 
 class Dashboard extends Component {
   state = {
-    value: 0
+    value: 'unanswered'
   }
 
   handleTabs = (event, value) => {
@@ -24,16 +26,16 @@ class Dashboard extends Component {
   }
 
   answeredList = () => {
-    return this.props.questions.filter(quest => (quest.optionOne.votes.includes(this.props.authedUser)||quest.optionTwo.votes.includes(this.props.authedUser)))
+    return this.props.questions.filter(q => (q.optionOne.votes.includes(this.props.authedUser)||q.optionTwo.votes.includes(this.props.authedUser)))
   }
 
   unansweredList = () => {
-    return this.props.questions.filter(quest => !this.answeredList().includes(quest))
+    return this.props.questions.filter(q => !this.answeredList().includes(q))
   }
 
   render() {
+    let questionList = this.state.value === "unanswered" ? this.unansweredList() : this.answeredList()
 
-    let questionList = this.state.value === 'unanswered' ? this.unansweredList() : this.answeredList()
     if (!this.props.authedUser) {
       return(<Redirect to='/login' />)
     }
@@ -49,26 +51,23 @@ class Dashboard extends Component {
                 onChange={this.handleTabs}
                 centered
               >
-                <Tab label="Unanswered Questions" />
-                <Tab label="Answered Questions" />
+                <Tab label="Unanswered Questions" value="unanswered" />
+                <Tab label="Answered Questions" value="answered" />
               </Tabs>
             </Paper>
             <Paper>
               <List>
                 {questionList && questionList.map(q => (
                   <ListItem key={q.id}>
-                    <Paper className='center'>
+                    <Paper>
                       <Link to={`/question/${q.id}`}>
-                        <ListItemText className='center'>
-                          <h2>Would you rather</h2>
-                          <p>
-                            {q.optionOne.text}
-                          </p>
-                          <h4>OR</h4>
-                          <p>
-                            {q.optionTwo.text}
-                          </p>
-                        </ListItemText>
+                        <Typography className='center' variant="headline" component="h3">Would you rather</Typography>
+                        <Typography component="p" className='margin'>
+                          {q.optionOne.text}
+                        </Typography>
+                        <Typography component="p" className='margin'>
+                          {q.optionTwo.text}
+                        </Typography>
                       </Link>
                     </Paper>
                   </ListItem>

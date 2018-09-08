@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/shared'
 
-class NewQuestion extends Component {
+class AddQuestion extends Component {
   state = {
     optionOne: '',
     optionTwo: ''
@@ -43,4 +43,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default connect()(NewQuestion)
+export default connect()(AddQuestion)

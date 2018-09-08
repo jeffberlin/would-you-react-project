@@ -114,3 +114,7 @@ li {
 .login-search {
   margin-right: 10px;
 }
+
+.margin {
+  margin: 1rem !important;
+}

@@ -12,7 +12,7 @@ export default function Nav () {
         </li>
         <li>
           <NavLink to='/add' activeClassName='active'>
-            New Question
+            Add Question
           </NavLink>
         </li>
         <li>
