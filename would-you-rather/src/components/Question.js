@@ -1,36 +1,49 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter, Redirect } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import Unanswered from './Unanswered'
-import Answered from './Answered'
+import { Link } from 'react-router-dom'
+import { handleAnswerQuestion } from '../actions/shared'
+
+// Using Material-UI to help build the layout
+import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
 
 class Question extends Component {
+
   render() {
-    const { question, answeredQuestion, authedUser } = this.props
-    if (authedUser) {
-      if (answeredQuestion) {
-        return <Answered id={question.id} />
-      } else {
-        return <Unanswered id={question.id} />
-      }
-    }
-    else {
-      return <Redirect to='/login' />
-    }
+    const { question, id } = this.props
+
+    return (
+      <Card>
+        <div>
+          <p className='p-text'>{question.optionOne.text}</p>
+        </div>
+        <div>
+          <p>OR</p>
+        </div>
+        <div>
+          <p className='p-text'>{question.optionTwo.text}</p>
+        </div>
+        <div>
+          <Link to={`/question/${id}`} className='login-btn'>View Poll</Link>
+        </div>
+      </Card>
+    )
   }
 }
 
-function mapStateToProps({ questions, authedUser, users }, props) {
-  const id = props.match.params.id
-  const question = questions[id]
-  const authedUsersAnswers = authedUser && Object.keys(users[authedUser].answers)
-  const answeredQuestion = authedUser && authedUsersAnswers.includes(id)
-
+function mapStateToProps({ questions, authedUser }, { id }) {
   return {
-    answeredQuestion,
-    question,
-    authedUser
+    question: questions[id],
+    optionOneChosen: questions[id].optionOne.votes.indexOf(authedUser) > -1,
+    optionTwoChosen: questions[id].optionTwo.votes.indexOf(authedUser) > -1
   }
 }
 

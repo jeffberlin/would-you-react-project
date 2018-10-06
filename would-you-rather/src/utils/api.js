@@ -10,9 +10,9 @@ export function getInitialData () {
   }))
 }
 
-export function saveQuestion (question) {
+export const saveQuestion = (question) => {
   return _saveQuestion(question)
-}
+};
 
 export function saveAnswer (answer) {
   return _saveQuestionAnswer(answer)

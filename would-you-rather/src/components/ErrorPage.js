@@ -7,7 +7,7 @@ class ErrorPage extends Component {
       <div className='center'>
         <h2>Error 404</h2>
         <h4>Page Not Found</h4>
-        <Link to='/'>Home</Link>
+        {/* <Link to='/'>Home</Link> */}
       </div>
     )
   }
