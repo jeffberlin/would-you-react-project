@@ -12,10 +12,10 @@ export function fetchInitialData() {
   }
 }
 
-export function handleSaveAnswer(qid, answer) {
+export function handleSaveAnswer(authedUser, qid, answer) {
   return (dispatch) => {
-    dispatch(handleSaveUserAnswer(qid, answer))
-    dispatch(answerQuestion(qid, answer))
+    dispatch(handleSaveUserAnswer(authedUser, qid, answer))
+    dispatch(answerQuestion(authedUser, qid, answer))
   }
 }
 

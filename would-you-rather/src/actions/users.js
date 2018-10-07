@@ -28,7 +28,7 @@ export function addQuestion(authedUser, qid) {
   }
 }
 
-export function handleSaveUserAnswer(qid, answer) {
+export function handleSaveUserAnswer(authedUser, qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
     return saveQuestionAnswer({ authedUser, qid, answer })
