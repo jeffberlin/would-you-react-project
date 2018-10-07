@@ -1,50 +1,37 @@
-import { saveQuestion } from '../utils/api'
+import { saveQuestionAnswer, addNewQuestion } from '../utils/api'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
-export const ANSWER_QUESTION = 'ANSWER_QUESTION'
+export const SAVE_ANSWER = 'SAVE_ANSWER'
 export const ADD_QUESTION = 'ADD_QUESTION'
 
-export function getQuestions (questions) {
+export function receiveQuestions(questions) {
   return {
     type: RECEIVE_QUESTIONS,
     questions
   }
 }
 
-export function answerQuestion ({authedUser, qid, answer}) {
+export function answerQuestion(authedUser, qid, answer) {
   return {
-    type: ANSWER_QUESTION,
+    type: SAVE_ANSWER,
     authedUser,
     qid,
     answer
   }
 }
 
-export function addNewQuestion (question) {
+export function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question
   }
 }
 
-// export function handleAddQuestion(info) {
-//   return (dispatch) => {
-//     return saveQuestion(info)
-//       .then((question) => {
-//         dispatch(addNewQuestion(question))
-//       })
-//   }
-// }
-export const handleAddQuestion = ({ optionOne, optionTwo }) => (dispatch, getState) => {
-  const { authedUser } = getState();
+export function handleAddQuestion(optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
 
-  return saveQuestion({
-    author: authedUser,
-    optionOneText: optionOne,
-    optionTwoText: optionTwo
-  })
-    .then(question => dispatch(addNewQuestion(question)))
-    .then(question => {
-      return question
-    })
-};
+    return addNewQuestion({ optionOneText, optionTwoText, author: authedUser })
+      .then((question) => dispatch(addQuestion(question)))
+  }
+}

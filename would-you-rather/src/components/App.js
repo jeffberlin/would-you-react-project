@@ -9,20 +9,21 @@ import LeaderBoard from './LeaderBoard'
 import QuestionPage from './QuestionPage'
 import Poll from './Poll'
 import ErrorPage from './ErrorPage'
-import { fetchInitialUsers, fetchInitialQuestions } from '../actions/shared'
+import { fetchInitialData } from '../actions/shared'
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(fetchInitialUsers())
-    this.props.dispatch(fetchInitialQuestions())
+    const { dispatch } = this.props
+    dispatch(fetchInitialData())
+    // this.props.dispatch(fetchInitialUsers())
+    // this.props.dispatch(fetchInitialQuestions())
   }
 
   render() {
     return (
       <Router>
         <Fragment>
-
           <div className='container'>
             {!this.props.showLogin && <Nav />}
             <Switch>

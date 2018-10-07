@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { handleAnswerQuestion } from '../actions/shared'
+import { handleSaveAnswer } from '../actions/shared'
 import ErrorPage from './ErrorPage'
+
 import Avatar from '@material-ui/core/Avatar'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import Button from '@material-ui/core/Button'
-
 
 class Poll extends Component {
 
@@ -15,7 +15,7 @@ class Poll extends Component {
     e.preventDefault()
     const { dispatch } = this.props
 
-    dispatch(handleAnswerQuestion(qid, answer))
+    dispatch(handleSaveAnswer(qid, answer))
   }
 
   render() {
@@ -79,18 +79,18 @@ class Poll extends Component {
   }
 }
 
-function mapStateToProps({ questions, users, authedUser}, props) {
+function mapStateToProps({ questions, users, authedUser }, props) {
   const { id } = props.match.params
 
   return {
     id,
-    authorAvatar: questions[id] ? users[questions[id].author].avatarURL : null,
-    question: questions[id] ? questions[id] : null,
-    optionOneChosen: questions[id] ? questions[id].optionOne.votes.indexOf(authedUser) > -1 : null,
-    optionOnePoll: questions[id] ? (questions[id].optionOne.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100 : null,
-    optionTwoChosen: questions[id] ? questions[id].optionTwo.votes.indexOf(authedUser) > -1 : null,
-    optionTwoPoll: questions[id] ? (questions[id].optionTwo.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100 : null,
-    authedUser
+		authorAvatar: questions[id] ? users[questions[id].author].avatarURL : null,
+		question: questions[id] ? questions[id] : null,
+		optionOneChosen: questions[id] ? questions[id].optionOne.votes.indexOf(authedUser) > -1 : null,
+		optionOnePoll: questions[id] ? (questions[id].optionOne.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100 : null,
+		optionTwoChosen: questions[id] ? questions[id].optionTwo.votes.indexOf(authedUser) > -1 : null,
+		optionTwoPoll: questions[id] ? (questions[id].optionTwo.votes.length / (questions[id].optionOne.votes.length + questions[id].optionTwo.votes.length)) * 100 : null,
+		authedUser
   }
 }
 
