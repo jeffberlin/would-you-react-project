@@ -11,9 +11,9 @@ import Button from '@material-ui/core/Button'
 
 class Poll extends Component {
 
-  handleVote = (e, authedUser, qid, answer) => {
+  handleVote = (e, qid, answer) => {
     e.preventDefault()
-    const { dispatch } = this.props
+    const { dispatch, authedUser } = this.props
 
     dispatch(handleSaveAnswer(authedUser, qid, answer))
   }
