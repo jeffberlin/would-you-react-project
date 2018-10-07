@@ -11,11 +11,11 @@ import Button from '@material-ui/core/Button'
 
 class Poll extends Component {
 
-  handleVote = (e, qid, answer) => {
+  handleVote = (e, authedUser, qid, answer) => {
     e.preventDefault()
     const { dispatch } = this.props
 
-    dispatch(handleSaveAnswer(qid, answer))
+    dispatch(handleSaveAnswer(authedUser, qid, answer))
   }
 
   render() {
