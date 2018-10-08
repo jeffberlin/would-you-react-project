@@ -4,7 +4,7 @@ import { setAuthedUserId } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
 
 // Using Material-UI to help build the layout
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'

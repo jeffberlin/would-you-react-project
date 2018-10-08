@@ -1,6 +1,6 @@
 import { getInitialData } from '../utils/api'
 import { receiveUsers, handleSaveUserAnswer, addQuestion } from './users'
-import { receiveQuestions, answerQuestion, handleAddQuestion } from './questions'
+import { receiveQuestions, answerQuestion, handleAddNewQuestion } from './questions'
 import { setAuthedUser } from './authedUser'
 
 export function fetchInitialData() {
@@ -19,14 +19,15 @@ export function handleSaveAnswer(authedUser, qid, answer) {
   }
 }
 
-export function handleAddNewQuestion(optionOneText, optionTwoText, authedUser) {
+export function handleAddQuestion(optionOneText, optionTwoText, authedUser) {
   return (dispatch) => {
-    return dispatch(handleAddQuestion(optionOneText, optionTwoText))
+    return dispatch(handleAddNewQuestion(optionOneText, optionTwoText))
       .then((question) => {
         dispatch(addQuestion(authedUser, question.question.id))
       })
   }
 }
+
 export function setAuthedUserId(authedUserId, dispatch) {
   dispatch(setAuthedUser(authedUserId))
 }

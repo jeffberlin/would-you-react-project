@@ -1,63 +1,99 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { handleAddQuestion } from '../actions/questions'
+import { handleAddQuestion } from '../actions/shared'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 
 class AddQuestion extends Component {
   state = {
-    optionOne: '',
-    optionTwo: '',
-    newQuestionId: ''
+    // optionOneText: '',
+    // optionTwoText: '',
+    // newQuestionId: '',
+    'optionOne': '',
+    'optionTwo': '',
+    'toHome': false
+    //toHome: false
   }
 
-  MAX_LENGTH = 80
+  handleOptionOneChange = (e) => {
+    const optionOne = e.target.value
 
-  handleChange = key => e => {
-    if (e.target.value.length <= this.MAX_LENGTH) {
-      this.setState({ [key]: e.target.value })
-    }
+    this.setState(() => ({
+      optionOne
+    }))
   }
 
-  handleSubmit = (e) => {
+  handleOptionTwoChange = (e) => {
+    const optionTwo = e.target.value
+
+    this.setState(() => ({
+      optionTwo
+    }))
+  }
+
+  handleAddQuestion = (e, optionOne, optionTwo) => {
     e.preventDefault()
-    const { optionOne, optionTwo } = this.state
-    const { handleAddQuestion } = this.props
 
-    handleAddQuestion({ optionOne, optionTwo })
-      .then(res => {
-        this.setState({
-          newQuestionId: res.question.id
-        })
-      })
+    const { dispatch, authedUser } = this.props
+
+    dispatch(handleAddQuestion(optionOne, optionTwo, authedUser))
+      .then(() => this.setState({
+        'optionOne': '',
+        'optionTwo': '',
+        'toHome': true
+      }))
   }
+
+  // handleChange = (key) => (e) => {
+  //   this.setState({
+  //     [key]: e.target.value
+  //   })
+  // }
+  //
+  // handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   const { optionOne, optionTwo } = this.state
+  //   const { handleAddQuestion } = this.props
+  //
+  //   handleAddQuestion({ optionOne, optionTwo })
+  //     .then(res => {
+  //       this.setState({
+  //         newQuestionId: res.question.id
+  //       })
+  //     })
+  // }
 
   render() {
-    const { optionOne, optionTwo, newQuestionId } = this.state
+    const { optionOne, optionTwo } = this.state
 
-    if (this.props.authedUser) {
-      if (this.state.toHome === true) {
-        return <Redirect to='/' />
-      }
+    if (!this.props.authedUser) {
+        return <Redirect to={{ pathname: '/login', state: { returnPath: '/add' }}} />
     }
 
-    if (newQuestionId) {
-      return <Redirect to={`/question/${newQuestionId}`} />
+    if (this.state.toHome) {
+      return <Redirect to='/' />
     }
+
+    // if (newQuestionId) {
+    //   return <Redirect to={`/question/${newQuestionId}`} />
+    // }
 
     return (
       <div>
         <h3 className='center header'>Add New Question</h3>
         <Paper>
-          <form onSubmit={this.handleSubmit} className='center'>
+          {/* <form onSubmit={this.handleSubmit} className='center'> */}
+          <form onSubmit={(e) => this.handleAddQuestion(e, optionOne, optionTwo)} className='center'>
             <div style={{ margin: 10 }}>
               <TextField
-                style={{marginTop: 10}}
+                style={{ marginTop: 10 }}
                 placeholder="Option 1"
-                onChange={this.handleChange('optionOne')}
+                //onChange={this.handleChange('optionOne')}
+                onChange={this.handleOptionOneChange}
                 value={optionOne}
+                id='optionOne'
                 required
                 rows={2}
               />
@@ -65,8 +101,10 @@ class AddQuestion extends Component {
             <div style={{ margin: '10px' }}>
               <TextField
                 placeholder="Option 2"
-                onChange={this.handleChange('optionTwo')}
+                //onChange={this.handleChange('optionTwo')}
+                onChange={this.handleOptionTwoChange}
                 value={optionTwo}
+                id='optionTwo'
                 required
               />
             </div>
@@ -84,4 +122,10 @@ class AddQuestion extends Component {
   }
 }
 
-export default connect(null, {handleAddQuestion})(AddQuestion)
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(AddQuestion)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { handleAnswerQuestion } from '../actions/shared'
+// import { handleAnswerQuestion } from '../actions/shared'
 
 // Using Material-UI to help build the layout
 import { withStyles } from '@material-ui/core/styles'

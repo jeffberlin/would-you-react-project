@@ -1,4 +1,4 @@
-import { saveQuestionAnswer, addNewQuestion } from '../utils/api'
+import { addNewQuestion } from '../utils/api'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -27,11 +27,11 @@ export function addQuestion(question) {
   }
 }
 
-export function handleAddQuestion(optionOneText, optionTwoText) {
+export function handleAddNewQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
-    return addNewQuestion({ optionOneText, optionTwoText, author: authedUser })
+    return addNewQuestion({ optionOneText, optionTwoText, authedUser })
       .then((question) => dispatch(addQuestion(question)))
   }
 }
