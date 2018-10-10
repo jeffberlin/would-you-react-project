@@ -23,22 +23,12 @@ class LeaderBoard extends Component {
                 }
                 title={user.name}
               />
-
-              {/* <div key={user.id}> */}
-              {/* <div>
-                <Avatar
-                  src={user.avatarURL}
-                  alt="Avatar"
-              /> */}
-              {/* <h4 className='user-name'>{index + 1}. {user.name}</h4> */}
-              {/* </div> */}
               <div>
                 <p className='p-text'>Asked: {Object.keys(user.questions).length}</p>
               </div>
               <div>
                 <p className='p-text'>Answered: {Object.keys(user.answers).length}</p>
               </div>
-              {/* </div> */}
             </Card>
           </div>
         ))}

@@ -15,8 +15,6 @@ class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     dispatch(fetchInitialData())
-    // this.props.dispatch(fetchInitialUsers())
-    // this.props.dispatch(fetchInitialQuestions())
   }
 
   render() {
