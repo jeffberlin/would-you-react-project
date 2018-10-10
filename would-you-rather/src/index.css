@@ -36,6 +36,12 @@ li {
   font-family: 'Roboto Condensed', sans-serif !important;
   letter-spacing: .7px;
   color: #696a6d !important;
+  font-weight: 300;
+  font-size: 16pt;
+}
+
+.avatar-name span {
+  font-size: 18px !important;
 }
 
 .nav {
@@ -54,49 +60,18 @@ li {
 }
 
 .active {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .header {
   font-family: 'Oxygen', sans-serif;
   letter-spacing: .7px;
-  font-weight: 400;
   color: #3a4b58;
+  font-size: 22pt;
 }
 
 .form {
   min-width: 120px !important;
-}
-
-/* .avatar {
-  height: 50px;
-  border-radius: 25px;
-  margin: 10px;
-} */
-
-.avatar-name span {
-  font-size: 18px !important;
-}
-
-.login-btn {
-  font-family: 'Oxygen', sans-serif !important;
-  letter-spacing: .7px;
-  font-weight: 700 !important;
-  color: #30CF83 !important;
-  margin-top: 1rem !important;
-}
-
-.question-info {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.question-tab span {
-  font-family: 'Oxygen', sans-serif !important;
-  letter-spacing: .7px;
-  font-weight: 700 !important;
-  font-size: 14px;
 }
 
 .TabIndicator-colorSecondary-189 {
@@ -111,10 +86,45 @@ li {
   margin-top: 4rem;
 }
 
+.card-header-user span {
+  text-align: left;
+  font-size: 16px !important;
+  font-family: 'Oxygen', sans-serif !important;
+  letter-spacing: .7px !important;
+  color: #30CF83;
+}
+
+/* Button CSS */
+.login-btn {
+  font-family: 'Oxygen', sans-serif !important;
+  letter-spacing: .7px;
+  font-weight: 700 !important;
+  color: #30CF83 !important;
+  margin-top: 1rem !important;
+}
+
+.vote-btn {
+  background-color: #30CF83 !important;
+  color: #ffffff !important;
+}
+
 .login-search {
   margin-right: 10px;
 }
 
 .margin {
   margin: 1rem !important;
+}
+
+/* Question list page (home) */
+.question-card {
+  padding: 2rem;
+}
+
+/* LeaderBoard page */
+.user-name {
+  color: #3a4b58 !important;
+  font-family: 'Oxygen', sans-serif !important;
+  font-size: 16pt !important;
+  margin-top: 0;
 }

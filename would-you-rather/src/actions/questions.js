@@ -31,7 +31,7 @@ export function handleAddNewQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
-    return addNewQuestion({ optionOneText, optionTwoText, authedUser })
+    return addNewQuestion({ optionOneText, optionTwoText, author: authedUser })
       .then((question) => dispatch(addQuestion(question)))
   }
 }

@@ -8,13 +8,9 @@ import Paper from '@material-ui/core/Paper'
 
 class AddQuestion extends Component {
   state = {
-    // optionOneText: '',
-    // optionTwoText: '',
-    // newQuestionId: '',
     'optionOne': '',
     'optionTwo': '',
     'toHome': false
-    //toHome: false
   }
 
   handleOptionOneChange = (e) => {
@@ -46,25 +42,6 @@ class AddQuestion extends Component {
       }))
   }
 
-  // handleChange = (key) => (e) => {
-  //   this.setState({
-  //     [key]: e.target.value
-  //   })
-  // }
-  //
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   const { optionOne, optionTwo } = this.state
-  //   const { handleAddQuestion } = this.props
-  //
-  //   handleAddQuestion({ optionOne, optionTwo })
-  //     .then(res => {
-  //       this.setState({
-  //         newQuestionId: res.question.id
-  //       })
-  //     })
-  // }
-
   render() {
     const { optionOne, optionTwo } = this.state
 
@@ -76,21 +53,15 @@ class AddQuestion extends Component {
       return <Redirect to='/' />
     }
 
-    // if (newQuestionId) {
-    //   return <Redirect to={`/question/${newQuestionId}`} />
-    // }
-
     return (
       <div>
         <h3 className='center header'>Add New Question</h3>
         <Paper>
-          {/* <form onSubmit={this.handleSubmit} className='center'> */}
           <form onSubmit={(e) => this.handleAddQuestion(e, optionOne, optionTwo)} className='center'>
             <div style={{ margin: 10 }}>
               <TextField
                 style={{ marginTop: 10 }}
                 placeholder="Option 1"
-                //onChange={this.handleChange('optionOne')}
                 onChange={this.handleOptionOneChange}
                 value={optionOne}
                 id='optionOne'
@@ -101,7 +72,6 @@ class AddQuestion extends Component {
             <div style={{ margin: '10px' }}>
               <TextField
                 placeholder="Option 2"
-                //onChange={this.handleChange('optionTwo')}
                 onChange={this.handleOptionTwoChange}
                 value={optionTwo}
                 id='optionTwo'

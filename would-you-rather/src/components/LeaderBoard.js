@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
 import Avatar from '@material-ui/core/Avatar'
 
 class LeaderBoard extends Component {
@@ -10,28 +12,40 @@ class LeaderBoard extends Component {
     }
     return (
       <div className='center'>
-        <h3>Leaderboard</h3>
-        {this.props.users.map((user, index) => (
+        <h3 className='header'>Leaderboard</h3>        {this.props.users.map((user, index) => (
           <div key={user.id}>
-            <div>
-              <Avatar
-                src={user.avatarURL}
-                alt="Avatar"
+            <Card className='card-style'>
+              <CardHeader className='card-header-user'
+                avatar = {
+                  <Avatar
+                    src={user.avatarURL}>
+                  </Avatar>
+                }
+                title={user.name}
               />
-              <h4>{index + 1}. {user.name}</h4>
-            </div>
-            <div>
-              <p>Asked: {user.questions.length}</p>
-            </div>
-            <div>
-              <p>Answered: {Object.keys(user.answers).length}</p>
-            </div>
+
+              {/* <div key={user.id}> */}
+              {/* <div>
+                <Avatar
+                  src={user.avatarURL}
+                  alt="Avatar"
+              /> */}
+              {/* <h4 className='user-name'>{index + 1}. {user.name}</h4> */}
+              {/* </div> */}
+              <div>
+                <p className='p-text'>Asked: {Object.keys(user.questions).length}</p>
+              </div>
+              <div>
+                <p className='p-text'>Answered: {Object.keys(user.answers).length}</p>
+              </div>
+              {/* </div> */}
+            </Card>
           </div>
         ))}
       </div>
-    )
-  }
-}
+        )
+          }
+          }
 
 function mapStateToProps({ users, authedUser }) {
   return {

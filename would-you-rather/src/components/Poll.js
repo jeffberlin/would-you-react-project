@@ -34,9 +34,10 @@ class Poll extends Component {
 
     return (
       <div className='center'>
-        <h2>Would You Rather</h2>
-        <Card>
+        <h3 className='header'>Would You Rather...</h3>
+        <Card className='card-style'>
           <CardHeader
+            className='card-header-user'
             avatar = {
               <Avatar
                 src={authorAvatar}>
@@ -46,13 +47,14 @@ class Poll extends Component {
           />
           {(optionOneChosen !== true && optionTwoChosen !== true) &&
             <div>
-              <p>{question.optionOne.text}</p>
-              <Button onClick={(e) => this.handleVote(e, id, 'optionOne')}>
-                Vote
+              <p className='p-text'>{question.optionOne.text}</p>
+              <Button onClick={(e) => this.handleVote(e, id, 'optionOne')} className='vote-btn'>
+                Select
               </Button>
-              <p>{question.optionTwo.text}</p>
-              <Button onClick={(e) => this.handleVote(e, id, 'optionTwo')}>
-                Vote
+              <h4>OR</h4>
+              <p className='p-text'>{question.optionTwo.text}</p>
+              <Button onClick={(e) => this.handleVote(e, id, 'optionTwo')} className='vote-btn'>
+                Select
               </Button>
             </div>
           }

@@ -28,17 +28,20 @@ class QuestionPage extends Component {
     if (!this.props.authedUser) {
       return <Redirect to={{ pathname: '/login', state: { returnPath: '/'}}} />
     }
+
     return (
       <div className='center'>
         {this.state.answered === true ? <h3 className='header'>Answered Questions</h3> : <h3 className='header'>Unanswered Questions</h3>}
         <div>
           <Button
             onClick={(e) => this.toggleAnswered(e, false)}
+            style={{ color: '#3a4b58' }}
           >
             Unanswered
           </Button>
           <Button
             onClick={(e) => this.toggleAnswered(e, true)}
+            style={{ color: '#3a4b58' }}
           >
             Answered
           </Button>

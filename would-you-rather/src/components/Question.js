@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import { handleAnswerQuestion } from '../actions/shared'
 
 // Using Material-UI to help build the layout
-import { withStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Avatar from '@material-ui/core/Avatar'
-import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 
 class Question extends Component {
@@ -21,18 +11,21 @@ class Question extends Component {
     const { question, id } = this.props
 
     return (
-      <Card>
+      <Card className='question-card'>
+        <div>
+          <h4 style={{ color: '#3a4b58' }}>Would You Rather...</h4>
+        </div>
         <div>
           <p className='p-text'>{question.optionOne.text}</p>
         </div>
         <div>
-          <p>OR</p>
+          <h5 style={{ color: '#3a4b58' }}>OR</h5>
         </div>
         <div>
           <p className='p-text'>{question.optionTwo.text}</p>
         </div>
         <div>
-          <Link to={`/question/${id}`} className='login-btn'>View Poll</Link>
+          <Link to={`/question/${id}`} className='login-btn'>Cast Vote</Link>
         </div>
       </Card>
     )
