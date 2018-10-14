@@ -1,42 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-// Using Material-UI to help build the layout
-import Card from '@material-ui/core/Card'
+import AnsweredQuestions from './AnsweredQuestions'
+import UnansweredQuestions from './UnansweredQuestions'
 
 class Question extends Component {
-
   render() {
-    const { question, id } = this.props
-
-    return (
-      <Card className='question-card'>
-        <div>
-          <h4 style={{ color: '#3a4b58' }}>Would You Rather...</h4>
-        </div>
-        <div>
-          <p className='p-text'>{question.optionOne.text}</p>
-        </div>
-        <div>
-          <h5 style={{ color: '#3a4b58' }}>OR</h5>
-        </div>
-        <div>
-          <p className='p-text'>{question.optionTwo.text}</p>
-        </div>
-        <div>
-          <Link to={`/question/${id}`} className='login-btn'>Cast Vote</Link>
-        </div>
-      </Card>
-    )
+    const { question, hasAnswered, authedUser } = this.props
+    if (authedUser) {
+      if (hasAnswered) {
+        return <AnsweredQuestions id={question.id} />
+      } else {
+        return <UnansweredQuestions id={question.id} />
+      }
+    }
+    else {
+      return <Redirect to='/login' />
+    }
   }
 }
 
-function mapStateToProps({ questions, authedUser }, { id }) {
+function mapStateToProps({ authedUser, users, questions }, props) {
+  const id = props.match.params.id
+  const question = questions[id]
+  const answeredByAuthedUser = authedUser && Object.keys(users[authedUser].answers)
+  const hasAnswered = authedUser && answeredByAuthedUser.includes(id)
+
   return {
-    question: questions[id],
-    optionOneChosen: questions[id].optionOne.votes.indexOf(authedUser) > -1,
-    optionTwoChosen: questions[id].optionTwo.votes.indexOf(authedUser) > -1
+    hasAnswered,
+    question,
+    authedUser
   }
 }
 

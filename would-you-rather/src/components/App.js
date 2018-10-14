@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Nav from './Nav'
 import AddQuestion from './AddQuestion'
-import Dashboard from './Dashboard'
+import Question from './Question'
+import Home from './Home'
 import Login from './Login'
 import LeaderBoard from './LeaderBoard'
-import Poll from './Poll'
 import ErrorPage from './ErrorPage'
 import { fetchInitialData } from '../actions/shared'
 
@@ -23,10 +23,11 @@ class App extends Component {
         <Fragment>
           <div className='container'>
             {!this.props.showLogin && <Nav />}
+            {/* <Nav /> */}
             <Switch>
-              <Route path='/' exact component={Dashboard} />
-              <Route path='/login' component={Login} />
-              <Route path='/question/:id' component={Poll} />
+              <Route path='/' exact component={Home} />
+              <Route path='/login' exact component={Login} />
+              <Route path='/question/:id' component={Question} />
               <Route path='/add' component={AddQuestion} />
               <Route path='/leaderboard' component={LeaderBoard} />
               <Route component={ErrorPage} />

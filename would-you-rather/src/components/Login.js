@@ -4,21 +4,19 @@ import { setAuthedUserId } from '../actions/shared'
 import { Redirect } from 'react-router-dom'
 
 // Using Material-UI to help build the layout
-// import PropTypes from 'prop-types'
 import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import Checkbox from '@material-ui/core/Checkbox'
 import Avatar from '@material-ui/core/Avatar'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 
 class Login extends Component {
   state = {
     checked: ''
   }
-
   handleToggle = value => () => {
     this.setState({
       checked: value
@@ -39,41 +37,44 @@ class Login extends Component {
     }
 
     return (
-      <Card className='center card-style'>
-        <div>
+      <div className='center'>
+        <Card className='login-container' style={{ marginLeft: '25%' }}>
           <h2 className='header'>Sign in to continue</h2>
-        </div>
-        <List>
-          {this.props.users.map(user => (
-            <ListItem key={user.id} onChange={this.handleToggle(user.id)} checked={this.state.checked === user.id}>
-              <Avatar
-                src={user.avatarURL}
-                alt={`Avatar of ${user.name}`}
-                className='avatar'
-              />
-              <ListItemText className='avatar-name p-text' primary={user.name} />
-              <ListItemSecondaryAction>
-                <Checkbox
-                  onChange={this.handleToggle(user.id)}
-                  checked={this.state.checked === user.id}
+          <List>
+            {this.props.users.map(user => (
+              <ListItem key={user.id} dense button>
+                <Avatar
+                  src={user.avatarURL}
+                  alt={user.name}
                 />
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List>
-        <Button
-          className='login-btn'
-          onClick={this.handleSignIn}
-        >
-          Log In
-        </Button>
-      </Card>
+                <ListItemText primary={user.name} />
+                <ListItemSecondaryAction>
+                  <Checkbox
+                    onChange={this.handleToggle(user.id)}
+                    checked={this.state.checked === user.id}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
+          </List>
+          <Button
+            type='submit'
+            onClick={this.handleSignIn}
+            disabled={!this.state.checked}
+            className='login-btn'
+          >
+            Log In
+          </Button>
+        </Card>
+      </div>
     )
   }
 }
 
-function mapStateToProps ({ users }) {
-  return {users: Object.keys(users).map(key => users[key])}
+function mapStateToProps({ users }) {
+    return {
+      users: Object.keys(users).map(key => users[key])
+    }
 }
 
 export default connect(mapStateToProps)(Login)

@@ -1,5 +1,3 @@
-import { saveQuestionAnswer } from '../utils/api'
-
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_QUESTION = 'ADD_QUESTION_TO_USER'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -11,7 +9,7 @@ export function receiveUsers(users) {
   }
 }
 
-export function saveAnswer(authedUser, qid, answer) {
+export function saveAnswer({authedUser, qid, answer}) {
   return {
     type: SAVE_ANSWER,
     authedUser,
@@ -25,13 +23,5 @@ export function addQuestion(authedUser, qid) {
     type: ADD_QUESTION,
     authedUser,
     qid,
-  }
-}
-
-export function handleSaveUserAnswer(authedUser, qid, answer) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState()
-    return saveQuestionAnswer({ authedUser, qid, answer })
-      .then(() => dispatch(saveAnswer(authedUser, qid, answer)))
   }
 }

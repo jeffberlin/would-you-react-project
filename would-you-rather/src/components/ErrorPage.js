@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import Nav from './Nav'
 
-class ErrorPage extends Component {
-  render() {
-    return (
+const ErrorPage = () => {
+  return (
+    <div>
+      <Nav />
       <div className='center'>
-        <h2>Error 404</h2>
-        <h4>Page Not Found</h4>
+        <h2 style={{ color: '#195a7c' }}>Page Not Found</h2>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default ErrorPage
