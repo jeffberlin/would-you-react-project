@@ -53,38 +53,42 @@ class AddQuestion extends Component {
       return <Redirect to='/' />
     }
     return (
-      <Card className='question-card'>
-        <CardHeader title='Add New Question' className='header'></CardHeader>
-        <CardContent>
-          <h3 style={{ color: '#3a4b58'}}>Would You Rather</h3>
-          <Divider />
-          <form noValidate autoComplete='off' onSubmit={this.handleSubmit}>
-            <div>
-              <TextField
-                id='optionOne'
-                label='Option One'
-                value={this.state.optionOne}
-                onChange={this.handleChange}
-                margin='normal'
-              />
-            </div>
-            <div>
-              <TextField
-                id='optionTwo'
-                label='Option Two'
-                value={this.state.optionTwo}
-                onChange={this.handleChange}
-                margin='normal'
-              />
-            </div>
-            <Button
-              type='submit'
-              disabled={this.state.optionOne === '' || this.state.optionTwo === ''} style={{ color: '#30CF83' }}>
-              Add
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+      <div>
+        <h3 className='header'>Add New Question</h3>
+
+        <Card className='question-card'>
+          {/* <CardHeader title='Add New Question' className='header'></CardHeader> */}
+          <CardContent>
+            <h3 style={{ color: '#3a4b58'}}>Would You Rather</h3>
+            <Divider />
+            <form noValidate autoComplete='off' onSubmit={this.handleSubmit}>
+              <div>
+                <TextField
+                  id='optionOne'
+                  label='Option One'
+                  value={this.state.optionOne}
+                  onChange={this.handleChange}
+                  margin='normal'
+                />
+              </div>
+              <div>
+                <TextField
+                  id='optionTwo'
+                  label='Option Two'
+                  value={this.state.optionTwo}
+                  onChange={this.handleChange}
+                  margin='normal'
+                />
+              </div>
+              <Button
+                type='submit'
+                disabled={this.state.optionOne === '' || this.state.optionTwo === ''} style={{ color: '#30CF83' }}>
+                Add
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     )
   }
 }

@@ -16,7 +16,8 @@ class LeaderBoard extends Component {
       let users = this.props.users
       return (
       <div>
-        <CardHeader title='Leaderboard' className='header'></CardHeader>
+        <h3 className='header'>Leaderboard</h3>
+        {/* <CardHeader title='Leaderboard' className='header'></CardHeader> */}
         <Table>
           <TableHead>
             <TableRow>
