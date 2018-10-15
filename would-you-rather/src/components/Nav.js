@@ -72,13 +72,11 @@ class Nav extends Component {
               </Toolbar>
             </div>
           :
-          <div className='nav'>
-            <Toolbar className='container'>
-              <Link to='/login'>
-                <Button>Login</Button>
-              </Link>
-            </Toolbar>
-          </div>
+          <Link to='login'>
+            <Button>
+              Login
+            </Button>
+          </Link>
         }
       </div>
     )

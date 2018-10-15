@@ -1,15 +1,9 @@
 import React from 'react'
-import Nav from './Nav'
 
-const ErrorPage = () => {
-  return (
-    <div>
-      <Nav />
-      <div className='center'>
-        <h2 style={{ color: '#195a7c' }}>Page Not Found</h2>
-      </div>
-    </div>
-  )
-}
+const ErrorPage = () => (
+  <div className='center'>
+    <h2 style={{ color: '#3a4b58' }}>Page Not Found</h2>
+  </div>
+)
 
 export default ErrorPage

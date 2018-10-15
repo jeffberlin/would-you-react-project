@@ -37,7 +37,7 @@ class Login extends Component {
     // if (this.state.toHome === true) {
     //   return <Redirect to='/' />
     // }
-    const { from } = this.props.location.state || { from: {pathname: '/'} }
+    const { from } = this.props.location.state || { from: {pathname: '/dashboard'} }
     const { toRequestedUrl } = this.state
 
     if (toRequestedUrl === true) {
