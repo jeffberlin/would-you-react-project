@@ -15,7 +15,8 @@ import Avatar from '@material-ui/core/Avatar'
 
 class Login extends Component {
   state = {
-    checked: ''
+    checked: '',
+    toRequestedUrl: false
   }
   handleToggle = value => () => {
     this.setState({
@@ -27,13 +28,20 @@ class Login extends Component {
     setAuthedUserId(this.state.checked, this.props.dispatch)
 
     this.setState({
-      toHome: true
+      // toHome: true
+      toRequestedUrl: true
     })
   }
 
   render() {
-    if (this.state.toHome === true) {
-      return <Redirect to='/' />
+    // if (this.state.toHome === true) {
+    //   return <Redirect to='/' />
+    // }
+    const { from } = this.props.location.state || { from: {pathname: '/'} }
+    const { toRequestedUrl } = this.state
+
+    if (toRequestedUrl === true) {
+      return <Redirect to={from} />
     }
 
     return (

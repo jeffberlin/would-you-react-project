@@ -5,7 +5,6 @@ import { handleAddQuestion } from '../actions/shared'
 
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardHeader from '@material-ui/core/CardHeader'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
@@ -39,11 +38,6 @@ class AddQuestion extends Component {
   }
 
   render() {
-    // if (this.props.authedUser) {
-    //   if (this.state.toHome === true) {
-    //     return <Redirect to='/' />
-    //   }
-    // }
 
     if (!this.props.authedUser) {
       return <Redirect to='/login' />
@@ -55,11 +49,9 @@ class AddQuestion extends Component {
     return (
       <div>
         <h3 className='header'>Add New Question</h3>
-
         <Card className='question-card'>
-          {/* <CardHeader title='Add New Question' className='header'></CardHeader> */}
           <CardContent>
-            <h3 style={{ color: '#3a4b58'}}>Would You Rather</h3>
+            <h3 style={{ color: '#3a4b58' }}>Would You Rather</h3>
             <Divider />
             <form noValidate autoComplete='off' onSubmit={this.handleSubmit}>
               <div>

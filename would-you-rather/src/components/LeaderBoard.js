@@ -8,7 +8,6 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Avatar from '@material-ui/core/Avatar'
-import CardHeader from '@material-ui/core/CardHeader'
 
 class LeaderBoard extends Component {
   render() {
@@ -17,7 +16,6 @@ class LeaderBoard extends Component {
       return (
       <div>
         <h3 className='header'>Leaderboard</h3>
-        {/* <CardHeader title='Leaderboard' className='header'></CardHeader> */}
         <Table>
           <TableHead>
             <TableRow>
