@@ -65,6 +65,7 @@ class AddQuestion extends Component {
                   margin='normal'
                 />
               </div>
+              <h5 style={{ color: '#3a4b58', marginBottom: '0' }}>OR</h5>
               <div>
                 <TextField
                   id='optionTwo'
