@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { handleSaveAnswer } from '../actions/shared'
 
 import FormControlLabel from '@material-ui/core/FormControlLabel'

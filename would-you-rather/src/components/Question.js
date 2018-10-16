@@ -8,6 +8,13 @@ import UnansweredQuestions from './UnansweredQuestions'
 class Question extends Component {
   render() {
     const { question, hasAnswered, authedUser } = this.props
+
+    if (!this.props.authedUser) {
+      return <Redirect to={{pathname: '/login', state: {
+        from: this.props.location.pathname
+      }}} />
+    }
+
     if (authedUser) {
       if (hasAnswered) {
         return <AnsweredQuestions id={question.id} />

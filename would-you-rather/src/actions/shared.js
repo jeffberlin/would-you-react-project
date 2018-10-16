@@ -15,7 +15,7 @@ export function fetchInitialData() {
 
 export function handleSaveAnswer(info) {
   return (dispatch) => {
-    dispatch(answerQuestion(info))
+    // dispatch(answerQuestion(info))
     dispatch(saveAnswer(info))
 
     return _saveQuestionAnswer(info)
