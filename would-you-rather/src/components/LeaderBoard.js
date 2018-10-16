@@ -11,6 +11,12 @@ import Avatar from '@material-ui/core/Avatar'
 
 class LeaderBoard extends Component {
   render() {
+    if (!this.props.authedUser) {
+      return <Redirect to={{pathname: '/login', state: {
+        from: this.props.location.pathname
+      }}} />
+    }
+    
     if (this.props.authedUser){
       let users = this.props.users
       return (

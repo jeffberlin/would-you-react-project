@@ -40,7 +40,9 @@ class AddQuestion extends Component {
   render() {
 
     if (!this.props.authedUser) {
-      return <Redirect to='/login' />
+      return <Redirect to={{pathname: '/login', state: {
+        from: this.props.location.pathname
+      }}} />
     }
 
     if (this.state.toHome === true) {
