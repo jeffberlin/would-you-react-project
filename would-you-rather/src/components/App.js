@@ -22,8 +22,8 @@ class App extends Component {
       <Router>
         <Fragment>
           <div className='container'>
-            {!this.props.showLogin && <Nav />}
-            {/* <Nav /> */}
+            {/* {!this.props.showLogin && <Nav />} */}
+            <Nav />
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path='/login' component={Login} />

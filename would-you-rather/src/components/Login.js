@@ -46,7 +46,7 @@ class Login extends Component {
 
     return (
       <div className='center'>
-        <Card className='login-container' style={{ marginLeft: '25%' }}>
+        <Card className='login-container' style={{ marginLeft: '25%', marginRight: '25%' }}>
           <h2 className='header'>Sign in to continue</h2>
           <List>
             {this.props.users.map(user => (
