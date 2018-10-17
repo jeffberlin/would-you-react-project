@@ -18,11 +18,11 @@ class UnansweredQuestions extends Component {
 
   handleSubmit= (e) => {
     e.preventDefault()
-    const { dispatch } = this.props
+    const { dispatch, authedUser, question } = this.props
 
     dispatch(handleSaveAnswer({
-      authedUser: this.props.authedUser,
-      qid: this.props.question.id,
+      authedUser: authedUser,
+      qid: question.id,
       answer: this.state.answerOption
     }))
   }

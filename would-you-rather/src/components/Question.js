@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import ErrorPage from './ErrorPage'
 
 import AnsweredQuestions from './AnsweredQuestions'
 import UnansweredQuestions from './UnansweredQuestions'
@@ -13,6 +14,10 @@ class Question extends Component {
       return <Redirect to={{pathname: '/login', state: {
         from: this.props.location.pathname
       }}} />
+    }
+
+    if (!question) {
+      return <ErrorPage />
     }
 
     if (authedUser) {

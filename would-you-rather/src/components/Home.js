@@ -29,7 +29,9 @@ class Home extends Component {
   }
 
   render() {
-    let questionList = this.state.value === 'unanswered' ? this.getUnanswered() : this.getAnswered()
+    // let questionList = this.state.value === 'unanswered' ? this.getUnanswered() : this.getAnswered()
+
+    const questionList = this.state.value === 'unanswered' ? this.getUnanswered() : this.getAnswered()
 
     if (!this.props.authedUser) {
       return (<Redirect to='/login' />)
